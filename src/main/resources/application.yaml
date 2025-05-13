@@ -1,0 +1,53 @@
+spring:
+  main:
+    banner-mode: log
+  application:
+    name: ControlClientInfo
+  datasource:
+    url: jdbc:mysql://localhost:3306/clientControl?createDatabaseIfNotExist=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: true
+
+  aop:
+    proxy-target-class: false
+    cache:
+      type: simple
+    jackson:
+      serialization:
+        fail-on-empty-beans: false
+    management:
+      metrics:
+        enable:
+          all: true
+      endpoints:
+        web:
+          exposure:
+            include: '*'
+  request-logging:
+    enabled: true
+    log-file: logs/request.log
+
+jwt:
+  secret-key: K0wZWUmLrlTtOm6nFu3eFuICiHgR2Jw6FBRkkQ57HxUwOo9u1CDWlkQ57HxUwOo=
+  access-token-expiration: 1800000
+  refresh-token-expiration: 2592000000
+
+logging:
+  level:
+    root: "info"
+    org:
+      springframework: "warn"
+      hibernate: "warn"
+    com:
+      tu:
+        paquete: "debug"
